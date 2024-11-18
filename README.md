@@ -125,6 +125,8 @@ max     3736928711.00
 
 ** Train & Test data with 20% Test Size and random state as 23**
 ---
+** Applied One-Hot Encoding on Nominal category of columns like title_status & condition **
+---
 ```
 dfc = df[['condition', 'title_status', 'odometer’]]
 X = dfc[['condition', 'title_status', 'odometer']]
