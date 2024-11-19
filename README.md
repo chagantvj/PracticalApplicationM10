@@ -114,18 +114,18 @@ min          57400.00
 75%          77999.00
 max     3736928711.00 
 ```
-**Violin plot of title_status vs price log **
+**Violin plot of title_status vs price log**
 ---
 <img width="716" alt="Screenshot 2024-11-17 at 11 07 29 PM" src="https://github.com/user-attachments/assets/ddf85b84-473f-4f66-9387-f1788c5b27ef">
 
-**Violin plot of condition vs price log **
+**Violin plot of condition vs price log**
 ---
 <img width="654" alt="Screenshot 2024-11-17 at 11 07 57 PM" src="https://github.com/user-attachments/assets/abf1c186-cb5d-4945-a6e3-f51581c2e25f">
 
 
-** Train & Test data with 20% Test Size and random state as 23**
+**Train & Test data with 20% Test Size and random state as 23**
 ---
-** Applied One-Hot Encoding on Nominal category of columns like title_status & condition **
+**Applied One-Hot Encoding on Nominal category of columns like title_status & condition**
 ---
 ```
 dfc = df[['condition', 'title_status', 'odometer’]]
@@ -148,8 +148,30 @@ y.mean().round(1)
 # 75199.0 
 ```
 
-** Linear Regression **
+**Linear Regression**
 ---
 <img width="1109" alt="Screenshot 2024-11-18 at 7 10 53 PM" src="https://github.com/user-attachments/assets/7e249944-8fbd-4567-915c-7f62d18cbfd9">
 
+**Losso Regression**
+---
+<img width="1137" alt="Screenshot 2024-11-18 at 10 36 15 PM" src="https://github.com/user-attachments/assets/c7fda4ee-c558-421c-9372-3ba8bf133f18">
 
+**Ridge Regression**
+---
+<img width="1135" alt="Screenshot 2024-11-18 at 10 37 23 PM" src="https://github.com/user-attachments/assets/53bb46a5-edd7-4f10-b5bc-30fe40a19b86">
+
+Conclusion & Recommendation
+---
+
+Out of all the columns gien in dataset, columns named 'region', 'manufacturer', 'model', 'drive', 'size', 'type', 'paint_color' & 'state' as too many categorical variables that will be overfitting the model and hence ignored those column data. If we apply One-Hot encoding on those columns, its going to generate 100s of columns which will overload the model to process.
+
+Column named 'id', 'VIN', 'fuel', & 'cylinders' does not play a role on car price and hence dropped from the DataSet
+
+Column named 'odometer', 'title_status' & 'condition' is going to play a role as per domain knowledge that I have and hence considered for modeling.
+Applied one-hot encoding on catorigical data like 'title_status' & 'condition' and applied three different models like Linear-Regression, Losso-Regression and Ridge-Regression and all these three models gives almost ~0 on Train_R2_Score and Test_R2_Score. This shows the the models are under-fit and hence not able to predict actual price of the model
+
+This under-fitting could be due to the 'most_frequent' imputer method used to fillin missing data for columns 'title_status' & 'condition'.
+
+Violin plot on 'title_status' VS PriceLog & 'condition' VS PriceLog shows that the dependency is almost close to mean of the given data and hence the model. This data suggests that the model might be able to predict actual value given the data considered for models designed.
+
+Overall the suggestions would be that the 'odometer', 'title_status' & 'condition' is going to play a role on price of a car!
