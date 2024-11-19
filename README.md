@@ -148,4 +148,8 @@ y.mean().round(1)
 # 75199.0 
 ```
 
+** Linear Regression **
+---
+<img width="1109" alt="Screenshot 2024-11-18 at 7 10 53 PM" src="https://github.com/user-attachments/assets/7e249944-8fbd-4567-915c-7f62d18cbfd9">
+
 
